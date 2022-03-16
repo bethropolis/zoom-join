@@ -1,6 +1,7 @@
 {
     "name": "zoom join",
     "short_name": "zoomy",
+    "lang": "en-GB",
     "icons" : [
         {
             "src": "img/icon-192.png",
