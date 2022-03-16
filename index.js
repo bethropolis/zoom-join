@@ -81,6 +81,3 @@ if ('serviceWorker' in navigator) {
     console.log('Service worker registration failed, error:', error);
   });
 }
-self.addEventListener("activate", event => {
-  console.log("Service worker activated");
-});
