@@ -1,0 +1,20 @@
+{
+    "name": "zoom join",
+    "short_name": "zoom join",
+    "icons" : [
+        {
+            "src": "apple-touch-icon.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "apple-touch-icon-512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "/",
+    "theme_color": "#0652dd",
+    "background_color": "#f4f7f6",
+    "display": "standalone"
+}

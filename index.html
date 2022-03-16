@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Primary Meta Tags -->
+    <title>Zoom Join</title>
+    <meta name="title" content="Zoom Join" />
+    <meta name="description"
+        content="it's a tool that helps a student to easily, manage and attend zoom lessons on time. It works offline." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bethropolis.github.io/" />
+    <meta property="og:title" content="Zoom Join" />
+    <meta property="og:description"
+        content="it's a tool that helps a student to easily, manage and attend zoom lessons on time. It works offline." />
+    <meta property="og:image"
+        content="img/play_store_feature_graphic.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://metatags.io/" />
+    <meta property="twitter:title" content="Zoom Join" />
+    <meta property="twitter:description"
+        content="it's a tool that helps a student to easily, manage and attend zoom lessons on time. It works offline." />
+    <meta property="twitter:image"
+        content="img/play_store_feature_graphic.png" />
+    <meta name="theme-color" content="rgba(67, 22, 228, 0.844)" />
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="rgba(67, 22, 228, 0.844)" />
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="rgba(67, 22, 228, 0.844)" />
+    <title>zoom join</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="lib/font-awesome/font-awesome.min.css" />
+    <link rel="stylesheet" href="lib/bootstrap5.min.css
+    " />
+    <link rel="stylesheet" href="style.css" />
+    <script src="lib/vue.min.js"></script>
+    <script defer src="lib/jquery-3.3.1.min.js"></script>
+    <script defer src="index.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <div class="vh-100 vw-100 main-card" v-show="!this.insert">
+            <div class="card" style="width: 18rem">
+                <div class="card-body">
+                    <h5 class="card-title">What Class are you in?</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        class should be (2-digit) eg 2P
+                    </h6>
+                    <input type="text" class="form-control my-3 p-2" v-model="classy" maxlength="2"
+                        placeholder="enter your class..." />
+                    <a href="#" @click.prevent="updateClass(insert)"
+                        class="card-link btn btn-primary btn-flat w-50 mx-auto">setup</a>
+                </div>
+            </div>
+        </div>
+
+        <div v-show="page==1" class="pg-1">
+            <h1 class="text-center my-4">Quick zoom</h1>
+
+            <div class="d-flex justify-content-center">
+                <div v-show="links == false" class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            <div v-show="links" v-for="link in links" style="display: none" :key="link.id" class="container">
+                <a :href="link.link" class="link">
+                    <div class="shadow hover-overlay ripple p-3 row d-flex align-items-center mb-5 bg-white rounded">
+                        <div class="col-6">
+                            <h3 class="h2">{{link.name}}</h3>
+                        </div>
+                        <div class="col-6 text-black">
+                            <p>code: {{link.meeting_id}}</p>
+                            <p>pass: {{link.password}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div v-show="page==2" class="pg-2">
+            <div class="card bg-dark text-centertext-white">
+                <img :src="table" />
+            </div>
+        </div>
+        <div v-show="page==3" class="pg-3 text-center" id="notify">
+            <h1>no new notification</h1>
+        </div>
+        <div v-show="page==4" class="pg-4">
+            <h1>Settings</h1>
+            <form class="form-group w-75 mx-auto" style="max-width: 700px">
+                <div class="form-group">
+                    <label for="inputPassword6">Class</label>
+                    <input type="text" value="class" v-model="classy" @keyup="updateClass" maxlength="2"
+                        class="w-75 form-control mx-sm-3" />
+                    <small id="passwordHelpInline" class="text-muted">
+                        this will affect the current list.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword6">Timetable</label>
+                    <input type="text" value="class" v-model="table" @change="updateTable" @paste="updateTable"
+                        class="w-75 form-control mx-sm-3" />
+                    <small id="passwordHelpInline" class="text-muted">
+                        this will change your time table
+                    </small>
+                </div>
+                <a href="tel:+254772420276">contact developer</a>
+            </form>
+        </div>
+        <br /><br /><br /><br /><br /><br /><br /><br />
+
+        <div class="custom-bottom-navbar">
+            <div class="container-fluid">
+                <nav class="">
+                    <a href="#" @click.prevent="page=1">
+                        <i class="fa fa-home glyphicon-bottom-navbar" :style="page==1?'color: #2980b9':null"></i>
+                    </a>
+                    <a href="#" @click.prevent="page=2">
+                        <i class="fa fa-calendar glyphicon-bottom-navbar" :style="page==2?'color: #2980b9':null"></i>
+                    </a>
+                    <a href="#" @click.prevent="[page=3,notify=false]">
+                        <i class="fa fa-bell glyphicon-bottom-navbar" :style="page==3?'color: #2980b9':null"><i
+                                v-show="notify" class="notify rounded-circle"></i></i>
+                    </a>
+                    <a href="#" @click.prevent="page=4">
+                        <i class="fa fa-cog glyphicon-bottom-navbar" :style="page==4?'color: #2980b9':null"></i>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
