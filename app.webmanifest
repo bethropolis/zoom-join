@@ -13,7 +13,7 @@
             "sizes": "512x512"
         }
     ],
-    "start_url": "/zoom-view/index.html",
+    "start_url": "./",
     "theme_color": "#0652dd",
     "background_color": "#f4f7f6",
     "orientation": "portrait-primary",
