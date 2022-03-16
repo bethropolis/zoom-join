@@ -1,14 +1,14 @@
 {
     "name": "zoom join",
-    "short_name": "zoom join",
+    "short_name": "zoomy",
     "icons" : [
         {
-            "src": "apple-touch-icon.png",
+            "src": "img/icon-192.png",
             "type": "image/png",
             "sizes": "192x192"
         },
         {
-            "src": "apple-touch-icon-512.png",
+            "src": "img/icon-512.png",
             "type": "image/png",
             "sizes": "512x512"
         }
