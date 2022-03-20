@@ -72,7 +72,7 @@
                 </div>
             </div>
             <div v-show="links" v-for="link in links" style="display: none" :key="link.id" class="container">
-                <a :href="link.link" class="link">
+                <a :href="link.link||'#'" class="link">
                     <div class="shadow hover-overlay ripple p-3 row d-flex align-items-center mb-5 bg-white rounded">
                         <div class="col-6">
                             <h3 class="h2">{{link.name}}</h3>
