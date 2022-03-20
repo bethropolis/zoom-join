@@ -21,6 +21,9 @@ body {
   .container{
     user-select: text;
   }
+  .h2{
+    user-select: none;
+  }
   .noscroll { 
     overflow: hidden;
   }
