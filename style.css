@@ -18,6 +18,9 @@ body {
     overflow-y: hidden; 
     overflow-x: hidden; 
   }
+  .container{
+    user-select: text;
+  }
   .noscroll { 
     overflow: hidden;
   }
